@@ -17,19 +17,13 @@ steps:
     version: 3.1.300
 
 - task: Npm@1
-  displayName: 'Run npm install'
+  displayName: 'Run npm install'git 
   inputs:
     verbose: false
 
-- script: './node_modules/.bin/node-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'
-  displayName: 'Compile Sass assets'
-
-- task: gulp@1
-  displayName: 'Run gulp tasks'
-
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
   displayName: 'Write build info'
-  workingDirectory: Tailspin.SpaceGame.Web/wwwroot
+  workingDirectory: RuigeLearningProject/wwwroot
 
 - task: DotNetCoreCLI@2
   displayName: 'Restore project dependencies'
