@@ -62,16 +62,16 @@ stages:
               downloadType: 'specific'
               downloadPath: '$(System.ArtifactsDirectory)'
 
-          - task: IISWebAppManagementOnMachineGroup@0
-            displayName: 'Create App Pool and Website'
-            inputs:
-              WebsiteName: '$(websiteName)'
-              WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot\$(websiteName)'
-              CreateOrUpdateAppPoolForWebsite: true
-              AppPoolNameForWebsite: '$(websiteName)'
-              Port: '80'
-              IPAddress: '*'
-              Protocol: 'http'
+          #- task: IISWebAppManagementOnMachineGroup@0
+          #  displayName: 'Create App Pool and Website'
+          #  inputs:
+          #    WebsiteName: '$(websiteName)'
+          #    WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot\$(websiteName)'
+          #    CreateOrUpdateAppPoolForWebsite: true
+          #    AppPoolNameForWebsite: '$(websiteName)'
+          #    Port: '80'
+          #    IPAddress: '*'
+          #    Protocol: 'http'
               
           - task: IISWebAppDeploymentOnMachineGroup@0
             displayName: 'Deploy IIS Website'
