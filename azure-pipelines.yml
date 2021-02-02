@@ -77,5 +77,4 @@ stages:
             displayName: 'Deploy IIS Website'
             inputs:
               WebSiteName: '$(websiteName)'
-              Package: '$(System.ArtifactsDirectory)\**\*.zip'
-              AdditionalArguments: '-dest:path="C:\inetpub\wwwroot\"$(websiteName)"'
+              Package: '$(System.ArtifactsDirectory)\**\*.zip'AdditionalArguments: '-dest:path="C:\inetpub\wwwroot\"$(websiteName)"'
