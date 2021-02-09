@@ -72,8 +72,8 @@ stages:
           #    IPAddress: '*'
           #    Protocol: 'http'
               
-          - task: IISWebAppDeploymentOnMachineGroup@0
-            displayName: 'Deploy IIS Website'
-            inputs:
-              WebSiteName: '$(websiteName)'
-              Package: '$(System.ArtifactsDirectory)\**\*.zip'
+          #- task: IISWebAppDeploymentOnMachineGroup@0
+          #  displayName: 'Deploy IIS Website'
+          #  inputs:
+          #    WebSiteName: '$(websiteName)'
+          #    Package: '$(System.ArtifactsDirectory)\**\*.zip'
