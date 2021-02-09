@@ -2,7 +2,7 @@ trigger:
 - build-pipeline
 
 pool:
-  vmImage: 'vs2017-win2016'
+  vmImage: 'windows-latest'
 
 variables:
   websiteName: 'RuigeLearning'
@@ -12,12 +12,6 @@ stages:
   jobs:
   - job: BuildJob
     steps:
-    #- task: UseDotNet@2
-    #  displayName: 'Use .NET Core SDK 3.1.300'
-    #  inputs:
-    #    packageType: sdk
-    #    version: 3.1.300
-
     - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
       displayName: 'Write build info'
       workingDirectory: ./wwwroot
@@ -66,18 +60,18 @@ stages:
               buildType: 'current'
               downloadType: 'specific'
               downloadPath: '$(System.ArtifactsDirectory)'
-          - task: IISWebAppManagementOnMachineGroup@0
-            displayName: 'Create App Pool and Website'
-            inputs:
-              WebsiteName: '$(websiteName)'
-              WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot\$(websiteName)'
-              CreateOrUpdateAppPoolForWebsite: true
-              AppPoolNameForWebsite: '$(websiteName)'
-          - task: Powershell@2
-            inputs:
-              targetType: 'inline'
-              script: |
-                New-WebBinding -Name "$(websiteName)" -Port 80 -IP *
+
+          #- task: IISWebAppManagementOnMachineGroup@0
+          #  displayName: 'Create App Pool and Website'
+          #  inputs:
+          #    WebsiteName: '$(websiteName)'
+          #    WebsitePhysicalPath: '%SystemDrive%\inetpub\wwwroot\$(websiteName)'
+          #    CreateOrUpdateAppPoolForWebsite: true
+          #    AppPoolNameForWebsite: '$(websiteName)'
+          #    Port: '80'
+          #    IPAddress: '*'
+          #    Protocol: 'http'
+              
           - task: IISWebAppDeploymentOnMachineGroup@0
             displayName: 'Deploy IIS Website'
             inputs:
